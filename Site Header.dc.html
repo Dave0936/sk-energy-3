@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;transition:background .4s ease;background:{{ navBg }};backdrop-filter:{{ navBlur }};-webkit-backdrop-filter:{{ navBlur }};font-family:'Outfit',system-ui,sans-serif">
+  <nav aria-label="Main" style="max-width:1100px;margin:0 auto;padding:{{ navPad }} clamp(20px,4vw,24px);display:flex;align-items:center;justify-content:space-between;gap:24px;transition:padding .4s ease">
+    <a href="SK%20Energy%20Homepage%20v2.dc.html" aria-label="SK Energy home" style="display:flex;align-items:center">
+      <img src="assets/sk-logo.svg" alt="SK Energy" style="height:28px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:4px">
+        <div style="position:relative" onMouseEnter="{{ openServices }}" onMouseLeave="{{ closeServices }}">
+          <button type="button" aria-expanded="{{ servicesOpen }}" aria-controls="services-menu" onClick="{{ toggleServices }}" style="display:flex;align-items:center;gap:6px;background:none;border:0;color:{{ c.services }};font-size:14px;padding:10px 12px;cursor:pointer;font-family:inherit" style-hover="color:#cbf24c">Services <span aria-hidden="true" style="font-size:9px;color:#cbf24c">▼</span></button>
+          <sc-if value="{{ servicesOpen }}" hint-placeholder-val="{{ false }}">
+            <div id="services-menu" style="position:absolute;top:100%;left:-16px;padding-top:10px;width:300px">
+              <ul style="list-style:none;margin:0;padding:8px;background:#1B3738;border:1px solid #2f5a5b;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.3);display:grid;gap:2px">
+                <li><a href="Service.dc.html?slug=solar-pv" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:10px;color:#fff;font-size:14px" style-hover="background:#25494A;color:#cbf24c">Solar PV<span style="font-size:12px;color:rgba(255,255,255,.7)">Generate your own electricity</span></a></li>
+                <li><a href="Service.dc.html?slug=battery-storage" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:10px;color:#fff;font-size:14px" style-hover="background:#25494A;color:#cbf24c">Battery Storage<span style="font-size:12px;color:rgba(255,255,255,.7)">Keep the power you make</span></a></li>
+                <li><a href="Service.dc.html?slug=heat-pumps" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:10px;color:#fff;font-size:14px" style-hover="background:#25494A;color:#cbf24c">Heat Pumps<span style="font-size:12px;color:rgba(255,255,255,.7)">Low-carbon heating and hot water</span></a></li>
+                <li><a href="Service.dc.html?slug=ev-chargers" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:10px;color:#fff;font-size:14px" style-hover="background:#25494A;color:#cbf24c">EV Chargers<span style="font-size:12px;color:rgba(255,255,255,.7)">Home, workplace and fleet</span></a></li>
+                <li><a href="Service.dc.html?slug=underfloor-heating" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:10px;color:#fff;font-size:14px" style-hover="background:#25494A;color:#cbf24c">Underfloor Heating<span style="font-size:12px;color:rgba(255,255,255,.7)">Even, efficient warmth</span></a></li>
+              </ul>
+            </div>
+          </sc-if>
+        </div>
+        <a href="SK%20Energy%20Homepage%20v2.dc.html#how" style="color:#fff;font-size:14px;padding:10px 12px" style-hover="color:#cbf24c">How It Works</a>
+        <a href="Work.dc.html" aria-current="{{ cur.work }}" style="color:{{ c.work }};font-size:14px;padding:10px 12px" style-hover="color:#cbf24c">Our Work</a>
+        <a href="About.dc.html" aria-current="{{ cur.about }}" style="color:{{ c.about }};font-size:14px;padding:10px 12px" style-hover="color:#cbf24c">About</a>
+        <a href="News.dc.html" aria-current="{{ cur.news }}" style="color:{{ c.news }};font-size:14px;padding:10px 12px" style-hover="color:#cbf24c">News</a>
+        <a href="Contact.dc.html" aria-current="{{ cur.contact }}" style="color:{{ c.contact }};font-size:14px;padding:10px 12px" style-hover="color:#cbf24c">Contact</a>
+      </div>
+      <a href="Contact.dc.html" style="display:flex;align-items:center;gap:16px;background:#1B3738;border:1px solid #cbf24c;color:#fff;font-size:14px;padding:4px 4px 4px 18px;border-radius:99px" style-hover="color:#fff">Free Consultation <span aria-hidden="true" style="width:40px;height:40px;border-radius:50%;background:#cbf24c;color:#1B3738;display:grid;place-items:center;font-size:17px">↗</span></a>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" aria-label="Menu" onClick="{{ toggleMenu }}" style="width:46px;height:46px;border-radius:50%;border:1px solid #cbf24c;background:#1B3738;color:#cbf24c;font-size:18px;cursor:pointer">{{ menuIcon }}</button>
+    </sc-if>
+  </nav>
+  <sc-if value="{{ mobileMenuVisible }}" hint-placeholder-val="{{ false }}">
+    <div id="mobile-menu" style="margin:0 16px 16px;background:#1B3738;border:1px solid #2f5a5b;border-radius:20px;padding:10px;display:flex;flex-direction:column;max-height:80vh;overflow:auto;color:#fff">
+      <span style="font-size:12px;color:#cbf24c;padding:12px 14px 4px">Services</span>
+      <a href="Service.dc.html?slug=solar-pv" style="padding:10px 14px;color:#fff">Solar PV</a>
+      <a href="Service.dc.html?slug=battery-storage" style="padding:10px 14px;color:#fff">Battery Storage</a>
+      <a href="Service.dc.html?slug=heat-pumps" style="padding:10px 14px;color:#fff">Heat Pumps</a>
+      <a href="Service.dc.html?slug=ev-chargers" style="padding:10px 14px;color:#fff">EV Chargers</a>
+      <a href="Service.dc.html?slug=underfloor-heating" style="padding:10px 14px;color:#fff">Underfloor Heating</a>
+      <span aria-hidden="true" style="height:1px;background:#2f5a5b;margin:8px 14px"></span>
+      <a href="SK%20Energy%20Homepage%20v2.dc.html#how" style="font-size:17px;padding:14px;color:#fff">How It Works</a>
+      <a href="Work.dc.html" style="font-size:17px;padding:14px;color:#fff">Our Work</a>
+      <a href="About.dc.html" style="font-size:17px;padding:14px;color:#fff">About</a>
+      <a href="News.dc.html" style="font-size:17px;padding:14px;color:#fff">News</a>
+      <a href="Contact.dc.html" style="margin-top:8px;text-align:center;background:#cbf24c;color:#1B3738;font-weight:500;font-size:17px;padding:16px;border-radius:99px">Get a Free Consultation</a>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1200px&quot;,&quot;height&quot;:&quot;420px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;services&quot;,&quot;work&quot;,&quot;about&quot;,&quot;news&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state={w:typeof window!=='undefined'?window.innerWidth:1400,scrolled:false,servicesOpen:false,menuOpen:false};
+  componentDidMount(){
+    this._r=()=>{clearTimeout(this._rt);this._rt=setTimeout(()=>{const w=window.innerWidth;if((w>=1000)!==(this.state.w>=1000))this.setState({w});},150);};
+    this._s=()=>{const s=window.scrollY>40;if(s!==this.state.scrolled)this.setState({scrolled:s});};
+    this._k=e=>{if(e.key==='Escape')this.setState({servicesOpen:false,menuOpen:false});};
+    window.addEventListener('resize',this._r);window.addEventListener('scroll',this._s,{passive:true});window.addEventListener('keydown',this._k);this._s();
+  }
+  componentWillUnmount(){window.removeEventListener('resize',this._r);window.removeEventListener('scroll',this._s);window.removeEventListener('keydown',this._k);clearTimeout(this._rt);}
+  renderVals(){
+    const s=this.state,desk=s.w>=1000,cur=this.props.current||'';
+    const keys=['services','work','about','news','contact'],c={},cu={};
+    keys.forEach(k=>{c[k]=k===cur?'#cbf24c':'#fff';cu[k]=k===cur?'page':undefined;});
+    return {isDesktop:desk,isMobile:!desk,c,cur:cu,
+      navBg:s.scrolled||s.menuOpen?'rgba(27,55,56,.94)':'transparent',navBlur:s.scrolled?'blur(14px)':'none',navPad:s.scrolled?'10px':'20px',
+      servicesOpen:s.servicesOpen,openServices:()=>this.setState({servicesOpen:true}),closeServices:()=>this.setState({servicesOpen:false}),toggleServices:()=>this.setState(p=>({servicesOpen:!p.servicesOpen})),
+      menuOpen:s.menuOpen,mobileMenuVisible:!desk&&s.menuOpen,menuIcon:s.menuOpen?'✕':'☰',toggleMenu:()=>this.setState(p=>({menuOpen:!p.menuOpen}))};
+  }
+}
+</script>
+</body>
+</html>

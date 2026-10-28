@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="site-motion.js"></script>
+<style>
+body{margin:0;background:#EFEFEF;color:#1B3738;font-family:'Outfit',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#cbf24c}
+:focus-visible{outline:2px solid #cbf24c;outline-offset:3px;border-radius:8px}
+input,select,textarea,button{font-family:inherit}
+html,body{overflow-x:clip}
+img{max-width:100%}
+h1,h2,h3,p,blockquote{overflow-wrap:break-word}
+::selection{background:#cbf24c;color:#1B3738}
+</style>
+</helmet>
+
+<dc-import name="Site Header" current="contact" style="position:fixed;top:0;left:0;right:0;z-index:50" hint-size="100%,80px"></dc-import>
+
+<main id="main">
+<section aria-labelledby="contact-h" style="background:#1B3738;color:#fff">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(112px,14vw,150px) clamp(20px,4vw,24px) 140px;display:grid;grid-template-columns:{{ splitCols }};gap:24px 40px">
+    <p data-hero-in="" style="margin:10px 0 0;font-size:13px;color:#cbf24c">Start a Conversation</p>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <h1 id="contact-h" style="margin:0;font-weight:400;font-size:clamp(36px,6vw,72px);line-height:1.02;letter-spacing:-.02em">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-word="" style="display:inline-block">Get a straight answer</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-word="" style="display:inline-block">on what your <span style="color:#cbf24c">property needs.</span></span></span>
+      </h1>
+      <p data-hero-in="" style="margin:0;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85);max-width:460px">Tell us a little about your project. We'll come back with the options worth surveying — or tell you if now isn't the time.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Contact details and enquiry form" style="background:#EFEFEF">
+  <div style="max-width:1100px;margin:-90px auto 0;position:relative;padding:0 clamp(20px,4vw,24px) clamp(64px,8vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a data-reveal="" href="mailto:customerservice@sk-energy.co.uk" style="background:#cbf24c;color:#1B3738;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:6px" style-hover="color:#1B3738"><span style="font-size:13px">Email</span><span style="font-size:clamp(17px,1.8vw,21px);overflow-wrap:break-word">customerservice@sk-energy.co.uk</span></a>
+      <a data-reveal="" href="tel:+441383257022" style="background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:6px;color:#1B3738" style-hover="color:#1B3738"><span style="font-size:13px;color:#5b6b6b">Phone</span><span style="font-size:21px">01383 257022</span></a>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px">
+        <address data-reveal="" style="font-style:normal;background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;color:#5b6b6b">Fife Office</span><span style="font-size:15px;line-height:1.55">Suite 2, Abtel Building<br>Pitreavie Business Park<br>Pitreavie Drive<br>Dunfermline, KY11 8US</span></address>
+        <address data-reveal="" style="font-style:normal;background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;color:#5b6b6b">York Office</span><span style="font-size:15px;line-height:1.55">Tower Court Business Centre<br>Oakdale Road<br>Clifton Moor<br>York, YO30 4XL</span></address>
+      </div>
+      <div data-reveal="" style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10"><img data-parallax="" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GEBhpJDThOL4J5Wt3PW565Nnud/hf_20261027_202203_934c7e51-9acb-4cbe-874b-1044f877ad5c.png" alt="SK Energy customer service team" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+    </div>
+
+    <form data-reveal="" noValidate="{{ true }}" onSubmit="{{ submit }}" aria-describedby="form-status" style="position:relative;background:#1B3738;color:#fff;border-radius:18px;padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0 0 4px;font-weight:400;font-size:clamp(21px,2.6vw,26px)">Request a consultation</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label for="f-name" style="font-size:13px">Name</label>
+          <input id="f-name" name="name" autoComplete="name" aria-invalid="{{ inv.name }}" aria-describedby="e-name" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.name }};background:#25494A;font-size:15px;color:#fff">
+          <sc-if value="{{ inv.name }}" hint-placeholder-val="{{ false }}"><span id="e-name" role="alert" style="font-size:13px;color:#ffb4a8">{{ err.name }}</span></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label for="f-email" style="font-size:13px">Email address</label>
+          <input id="f-email" name="email" type="email" autoComplete="email" aria-invalid="{{ inv.email }}" aria-describedby="e-email" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.email }};background:#25494A;font-size:15px;color:#fff">
+          <sc-if value="{{ inv.email }}" hint-placeholder-val="{{ false }}"><span id="e-email" role="alert" style="font-size:13px;color:#ffb4a8">{{ err.email }}</span></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label for="f-phone" style="font-size:13px">Phone <span style="color:rgba(255,255,255,.7)">(optional)</span></label>
+          <input id="f-phone" name="phone" type="tel" autoComplete="tel" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid #2f5a5b;background:#25494A;font-size:15px;color:#fff">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label for="f-postcode" style="font-size:13px">Postcode</label>
+          <input id="f-postcode" name="postcode" autoComplete="postal-code" aria-invalid="{{ inv.postcode }}" aria-describedby="e-postcode" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.postcode }};background:#25494A;font-size:15px;color:#fff;text-transform:uppercase">
+          <sc-if value="{{ inv.postcode }}" hint-placeholder-val="{{ false }}"><span id="e-postcode" role="alert" style="font-size:13px;color:#ffb4a8">{{ err.postcode }}</span></sc-if>
+        </div>
+      </div>
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+        <legend style="font-size:13px;padding:0;margin-bottom:8px">I'm a…</legend>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ custTypes }}" as="c" hint-placeholder-count="3">
+            <label style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:99px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;font-size:14px;transition:background .25s">
+              <input type="radio" name="customerType" value="{{ c.label }}" checked="{{ c.checked }}" onChange="{{ c.pick }}" style="accent-color:#1B3738;margin:0">{{ c.label }}
+            </label>
+          </sc-for>
+        </div>
+        <sc-if value="{{ inv.type }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#ffb4a8">{{ err.type }}</span></sc-if>
+      </fieldset>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label for="f-service" style="font-size:13px">Service of interest</label>
+        <select id="f-service" name="service" defaultValue="" aria-invalid="{{ inv.service }}" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.service }};background:#25494A;font-size:15px;color:#fff">
+          <option value="" disabled="{{ true }}">Choose a service</option>
+          <option>Solar PV</option><option>Battery Storage</option><option>Heat Pumps</option><option>EV Chargers</option><option>Underfloor Heating</option><option>Commercial or new-build project</option><option>Not sure yet</option>
+        </select>
+        <sc-if value="{{ inv.service }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#ffb4a8">{{ err.service }}</span></sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label for="f-details" style="font-size:13px">Project details <span style="color:rgba(255,255,255,.7)">(optional)</span></label>
+        <textarea id="f-details" name="details" rows="4" placeholder="Property type, current heating, anything we should know" style="padding:14px 16px;border-radius:16px;border:1px solid #2f5a5b;background:#25494A;font-size:15px;color:#fff;resize:vertical"></textarea>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="f-website">Website</label><input id="f-website" name="company_website" tabIndex="-1" autoComplete="off"></div>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5;color:rgba(255,255,255,.88);cursor:pointer">
+        <input type="checkbox" name="consent" aria-invalid="{{ inv.consent }}" style="margin-top:2px;width:17px;height:17px;accent-color:#cbf24c;flex-shrink:0">
+        <span>I agree to SK Energy using these details to respond to my enquiry, as described in the <a href="https://sk-energy.co.uk/privacy-policy/" style="text-decoration:underline;color:#cbf24c">privacy policy</a>.</span>
+      </label>
+      <sc-if value="{{ inv.consent }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#ffb4a8;margin-top:-8px">{{ err.consent }}</span></sc-if>
+      <button type="submit" disabled="{{ loading }}" style="align-self:flex-start;display:flex;align-items:center;gap:clamp(14px,3vw,28px);background:#cbf24c;color:#1B3738;font-weight:500;font-size:15px;padding:4px 4px 4px 20px;border:0;border-radius:99px;cursor:pointer;opacity:{{ btnOpacity }}">{{ submitLabel }} <span aria-hidden="true" style="width:42px;height:42px;border-radius:50%;background:#1B3738;color:#cbf24c;display:grid;place-items:center">↗</span></button>
+      <div id="form-status" role="status" aria-live="polite">
+        <sc-if value="{{ stSuccess }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#cbf24c;color:#1B3738;font-size:14px;line-height:1.5">Thanks — your enquiry has been received. We'll be in touch soon.</p></sc-if>
+        <sc-if value="{{ stError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#fbe9e7;color:#7a1c14;font-size:14px;line-height:1.5">Sorry, something went wrong and your enquiry wasn't sent. Please try again or email customerservice@sk-energy.co.uk.</p></sc-if>
+        <sc-if value="{{ stUnconfigured }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#fff4d6;color:#5a4300;font-size:14px;line-height:1.5">This form isn't connected yet, so your enquiry has not been sent. Please email customerservice@sk-energy.co.uk.</p></sc-if>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const TYPES=['Homeowner','Business','Developer'];
+class Component extends DCLogic {
+  state={w:typeof window!=='undefined'?window.innerWidth:1400,errors:{},status:'idle',ctype:''};
+  componentDidMount(){
+    let n=0;const wait=()=>{if(window.SKMotion){if(this.props.animations??true)this._stop=window.SKMotion.init();}else if(n++<100)this._w=setTimeout(wait,80);};wait();
+    this._r=()=>{clearTimeout(this._rt);this._rt=setTimeout(()=>{const w=window.innerWidth;if((w>=760)!==(this.state.w>=760))this.setState({w});},150);};window.addEventListener('resize',this._r);
+  }
+  componentWillUnmount(){clearTimeout(this._w);clearTimeout(this._rt);window.removeEventListener('resize',this._r);this._stop&&this._stop();}
+  validate(fd){
+    const e={},g=k=>(fd.get(k)||'').toString().trim();
+    if(!g('name'))e.name='Please enter your name.';
+    if(!g('email'))e.email='Please enter your email address.';else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g('email')))e.email='Please enter a valid email address, like name@example.com.';
+    if(!g('postcode'))e.postcode='Please enter your postcode.';else if(!/^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(g('postcode')))e.postcode='Please enter a valid UK postcode.';
+    if(!g('customerType'))e.type='Please tell us who the project is for.';
+    if(!g('service'))e.service='Please choose a service, or "Not sure yet".';
+    if(!fd.get('consent'))e.consent='Please confirm you agree so we can respond.';
+    return e;
+  }
+  submit=async ev=>{
+    ev.preventDefault();const form=ev.currentTarget,fd=new FormData(form);if(fd.get('company_website'))return;
+    const errors=this.validate(fd);
+    if(Object.keys(errors).length){this.setState({errors,status:'idle'});const m={name:'f-name',email:'f-email',postcode:'f-postcode',service:'f-service'};const el=document.getElementById(m[Object.keys(errors)[0]]);el&&el.focus();return;}
+    // Integration point: set formEndpoint to a URL accepting multipart POST (server-side validation + spam checks), returning 2xx on success.
+    const endpoint=(this.props.formEndpoint||'').trim();
+    if(!endpoint){this.setState({errors:{},status:'unconfigured'});return;}
+    this.setState({errors:{},status:'loading'});
+    try{const r=await fetch(endpoint,{method:'POST',body:fd,headers:{Accept:'application/json'}});if(r.ok){this.setState({status:'success',ctype:''});form.reset();}else this.setState({status:'error'});}catch(e){this.setState({status:'error'});}
+  };
+  renderVals(){
+    const s=this.state,e=s.errors,inv={},bd={};
+    ['name','email','postcode','type','service','consent'].forEach(k=>{inv[k]=!!e[k];bd[k]=e[k]?'#ffb4a8':'#2f5a5b';});
+    return {splitCols:s.w>=760?'190px minmax(0,1fr)':'minmax(0,1fr)',inv,bd,err:e,submit:this.submit,
+      custTypes:TYPES.map(t=>{const c=s.ctype===t;return {label:t,checked:c,pick:()=>this.setState({ctype:t}),bg:c?'#cbf24c':'#25494A',fg:c?'#1B3738':'#fff',border:c?'#cbf24c':(e.type?'#ffb4a8':'#2f5a5b')};}),
+      loading:s.status==='loading',btnOpacity:s.status==='loading'?.7:1,submitLabel:s.status==='loading'?'Sending…':'Request a Consultation',
+      stSuccess:s.status==='success',stError:s.status==='error',stUnconfigured:s.status==='unconfigured'};
+  }
+}
+</script>
+</body>
+</html>

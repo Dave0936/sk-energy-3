@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="site-motion.js"></script>
+<style>
+body{margin:0;background:#EFEFEF;color:#1B3738;font-family:'Outfit',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#cbf24c}
+:focus-visible{outline:2px solid #cbf24c;outline-offset:3px;border-radius:8px}
+input,select,textarea,button{font-family:inherit}
+html,body{overflow-x:clip}
+img{max-width:100%}
+h1,h2,h3,p,blockquote{overflow-wrap:break-word}
+::selection{background:#cbf24c;color:#1B3738}
+</style>
+</helmet>
+
+<dc-import name="Site Header" style="position:fixed;top:0;left:0;right:0;z-index:50" hint-size="100%,80px"></dc-import>
+
+<main id="main">
+<section aria-labelledby="w-h" style="background:#1B3738;color:#fff">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(112px,14vw,150px) clamp(20px,4vw,24px) 64px;display:grid;grid-template-columns:{{ splitCols }};gap:24px 40px">
+    <p data-hero-in="" style="margin:10px 0 0;font-size:13px;color:#cbf24c">Warranty &amp; Aftercare</p>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <h1 id="w-h" style="margin:0;font-weight:400;font-size:clamp(36px,6vw,72px);line-height:1.02;letter-spacing:-.02em">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-word="" style="display:inline-block">Register your</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-word="" style="display:inline-block;color:#cbf24c">installation.</span></span>
+      </h1>
+      <p data-hero-in="" style="margin:0;font-size:15px;line-height:1.65;color:rgba(255,255,255,.85);max-width:460px">Registering your system helps us activate manufacturer warranties and keep your aftercare on track. It takes about two minutes.</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,24px) clamp(56px,7vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px">
+    <div data-reveal="" style="border:1px solid #cbf24c;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;color:#cbf24c">01</span><span style="font-size:18px">Warranty activation</span><span style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.82)">We register eligible components with the manufacturer on your behalf.</span></div>
+    <div data-reveal="" style="background:#25494A;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;color:#cbf24c">02</span><span style="font-size:18px">Servicing reminders</span><span style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.82)">We'll get in touch when your system is due a maintenance visit.</span></div>
+    <div data-reveal="" style="background:#cbf24c;color:#1B3738;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px">03</span><span style="font-size:18px">Ongoing support</span><span style="font-size:13px;line-height:1.6;color:#24393a">Questions about performance or monitoring go straight to our team.</span></div>
+  </div>
+</section>
+
+<section aria-label="Registration form" style="background:#EFEFEF">
+  <div style="max-width:780px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,24px)">
+    <form data-reveal="" noValidate="{{ true }}" onSubmit="{{ submit }}" aria-describedby="form-status" style="position:relative;background:#fff;border-radius:18px;padding:clamp(22px,3.5vw,40px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-weight:400;font-size:clamp(26px,2.8vw,32px)">Installation details</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-name" style="font-size:13px">Full name</label><input id="w-name" name="name" autoComplete="name" aria-invalid="{{ inv.name }}" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.name }};background:#F4F5F2;font-size:15px;color:#1B3738"><sc-if value="{{ inv.name }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e">{{ err.name }}</span></sc-if></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-email" style="font-size:13px">Email address</label><input id="w-email" name="email" type="email" autoComplete="email" aria-invalid="{{ inv.email }}" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.email }};background:#F4F5F2;font-size:15px;color:#1B3738"><sc-if value="{{ inv.email }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e">{{ err.email }}</span></sc-if></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-phone" style="font-size:13px">Phone <span style="color:#5b6b6b">(optional)</span></label><input id="w-phone" name="phone" type="tel" autoComplete="tel" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid #d6dbd3;background:#F4F5F2;font-size:15px;color:#1B3738"></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-postcode" style="font-size:13px">Installation postcode</label><input id="w-postcode" name="postcode" autoComplete="postal-code" aria-invalid="{{ inv.postcode }}" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.postcode }};background:#F4F5F2;font-size:15px;color:#1B3738;text-transform:uppercase"><sc-if value="{{ inv.postcode }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e">{{ err.postcode }}</span></sc-if></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-date" style="font-size:13px">Installation date</label><input id="w-date" name="date" type="date" aria-invalid="{{ inv.date }}" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid {{ bd.date }};background:#F4F5F2;font-size:15px;color:#1B3738"><sc-if value="{{ inv.date }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e">{{ err.date }}</span></sc-if></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><label for="w-ref" style="font-size:13px">Job reference <span style="color:#5b6b6b">(optional)</span></label><input id="w-ref" name="reference" style="height:48px;padding:0 16px;border-radius:99px;border:1px solid #d6dbd3;background:#F4F5F2;font-size:15px;color:#1B3738"></div>
+      </div>
+      <fieldset aria-invalid="{{ inv.systems }}" style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+        <legend style="font-size:13px;padding:0;margin-bottom:8px">What was installed?</legend>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ systems }}" as="y" hint-placeholder-count="5">
+            <label style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:99px;border:1px solid {{ y.border }};background:{{ y.bg }};cursor:pointer;font-size:14px;transition:background .25s"><input type="checkbox" name="systems" value="{{ y.label }}" checked="{{ y.checked }}" onChange="{{ y.toggle }}" style="accent-color:#1B3738;margin:0">{{ y.label }}</label>
+          </sc-for>
+        </div>
+        <sc-if value="{{ inv.systems }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e">{{ err.systems }}</span></sc-if>
+      </fieldset>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="w-website">Website</label><input id="w-website" name="company_website" tabIndex="-1" autoComplete="off"></div>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5;color:#33484a;cursor:pointer">
+        <input type="checkbox" name="consent" aria-invalid="{{ inv.consent }}" style="margin-top:2px;width:17px;height:17px;accent-color:#1B3738;flex-shrink:0">
+        <span>I agree to SK Energy sharing these details with manufacturers to register my warranty, as described in the <a href="https://sk-energy.co.uk/privacy-policy/" style="text-decoration:underline;color:#1B3738">privacy policy</a>.</span>
+      </label>
+      <sc-if value="{{ inv.consent }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:13px;color:#b3261e;margin-top:-8px">{{ err.consent }}</span></sc-if>
+      <button type="submit" disabled="{{ loading }}" style="align-self:flex-start;display:flex;align-items:center;gap:clamp(14px,3vw,28px);background:#1B3738;color:#fff;border:1px solid #cbf24c;font-size:15px;padding:4px 4px 4px 20px;border-radius:99px;cursor:pointer;opacity:{{ btnOpacity }}">{{ submitLabel }} <span aria-hidden="true" style="width:42px;height:42px;border-radius:50%;background:#cbf24c;color:#1B3738;display:grid;place-items:center">↗</span></button>
+      <div id="form-status" role="status" aria-live="polite">
+        <sc-if value="{{ stSuccess }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#eef9cf;font-size:14px;line-height:1.5">Thanks — your registration has been received. We'll confirm by email.</p></sc-if>
+        <sc-if value="{{ stError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#fbe9e7;color:#7a1c14;font-size:14px;line-height:1.5">Sorry, something went wrong. Please try again or email customerservice@sk-energy.co.uk.</p></sc-if>
+        <sc-if value="{{ stUnconfigured }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:14px 16px;border-radius:14px;background:#fff4d6;color:#5a4300;font-size:14px;line-height:1.5">This form isn't connected yet, so your registration has not been sent. Please email customerservice@sk-energy.co.uk.</p></sc-if>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SYS=['Solar PV','Battery Storage','Heat Pump','EV Charger','Underfloor Heating'];
+class Component extends DCLogic {
+  state={w:typeof window!=='undefined'?window.innerWidth:1400,errors:{},status:'idle',sel:[]};
+  componentDidMount(){
+    let n=0;const wait=()=>{if(window.SKMotion){if(this.props.animations??true)this._stop=window.SKMotion.init();}else if(n++<100)this._w=setTimeout(wait,80);};wait();
+    this._r=()=>{clearTimeout(this._rt);this._rt=setTimeout(()=>{const w=window.innerWidth;if((w>=760)!==(this.state.w>=760))this.setState({w});},150);};window.addEventListener('resize',this._r);
+  }
+  componentWillUnmount(){clearTimeout(this._w);clearTimeout(this._rt);window.removeEventListener('resize',this._r);this._stop&&this._stop();}
+  submit=async ev=>{
+    ev.preventDefault();const form=ev.currentTarget,fd=new FormData(form);if(fd.get('company_website'))return;
+    const e={},g=k=>(fd.get(k)||'').toString().trim();
+    if(!g('name'))e.name='Please enter your full name.';
+    if(!g('email'))e.email='Please enter your email address.';else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g('email')))e.email='Please enter a valid email address.';
+    if(!g('postcode'))e.postcode='Please enter the installation postcode.';else if(!/^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(g('postcode')))e.postcode='Please enter a valid UK postcode.';
+    if(!g('date'))e.date='Please enter the installation date.';else if(new Date(g('date'))>new Date())e.date='The installation date can\u2019t be in the future.';
+    if(!fd.getAll('systems').length)e.systems='Please select at least one system.';
+    if(!fd.get('consent'))e.consent='Please confirm you agree so we can register your warranty.';
+    if(Object.keys(e).length){this.setState({errors:e,status:'idle'});const m={name:'w-name',email:'w-email',postcode:'w-postcode',date:'w-date'};const el=document.getElementById(m[Object.keys(e)[0]]);el&&el.focus();return;}
+    // Integration point: set formEndpoint to a URL accepting multipart POST, returning 2xx on success.
+    const endpoint=(this.props.formEndpoint||'').trim();
+    if(!endpoint){this.setState({errors:{},status:'unconfigured'});return;}
+    this.setState({errors:{},status:'loading'});
+    try{const r=await fetch(endpoint,{method:'POST',body:fd,headers:{Accept:'application/json'}});if(r.ok){this.setState({status:'success',sel:[]});form.reset();}else this.setState({status:'error'});}catch(x){this.setState({status:'error'});}
+  };
+  renderVals(){
+    const s=this.state,e=s.errors,inv={},bd={};
+    ['name','email','postcode','date','systems','consent'].forEach(k=>{inv[k]=!!e[k];bd[k]=e[k]?'#b3261e':'#d6dbd3';});
+    return {splitCols:s.w>=760?'190px minmax(0,1fr)':'minmax(0,1fr)',inv,bd,err:e,submit:this.submit,
+      systems:SYS.map(l=>{const c=s.sel.includes(l);return {label:l,checked:c,bg:c?'#cbf24c':'#F4F5F2',border:c?'#cbf24c':(e.systems?'#b3261e':'#d6dbd3'),toggle:()=>this.setState(p=>({sel:c?p.sel.filter(x=>x!==l):p.sel.concat(l)}))};}),
+      loading:s.status==='loading',btnOpacity:s.status==='loading'?.7:1,submitLabel:s.status==='loading'?'Sending…':'Register Installation',
+      stSuccess:s.status==='success',stError:s.status==='error',stUnconfigured:s.status==='unconfigured'};
+  }
+}
+</script>
+</body>
+</html>

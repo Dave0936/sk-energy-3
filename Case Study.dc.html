@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="site-data.js"></script>
+<script src="site-motion.js"></script>
+<style>
+body{margin:0;background:#EFEFEF;color:#1B3738;font-family:'Outfit',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#cbf24c}
+:focus-visible{outline:2px solid #cbf24c;outline-offset:3px;border-radius:8px}
+html,body{overflow-x:clip}
+img{max-width:100%}
+h1,h2,h3,p,blockquote{overflow-wrap:break-word}
+::selection{background:#cbf24c;color:#1B3738}
+</style>
+</helmet>
+
+<dc-import name="Site Header" current="work" style="position:fixed;top:0;left:0;right:0;z-index:50" hint-size="100%,80px"></dc-import>
+
+<main id="main">
+<section aria-labelledby="cs-h" style="position:relative;min-height:min(760px,92svh);background:#1B3738;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden">
+    <img data-hero-img="" src="{{ cs.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,38,39,.55) 0%,rgba(18,38,39,.25) 40%,rgba(18,38,39,.92) 100%)"></div>
+  </div>
+  <div style="position:relative;max-width:1100px;width:100%;margin:0 auto;padding:clamp(112px,14vw,140px) clamp(20px,4vw,24px) 120px;display:flex;flex-direction:column;gap:22px">
+    <nav data-hero-in="" aria-label="Breadcrumb" style="font-size:13px;display:flex;gap:8px;color:rgba(255,255,255,.85)"><a href="Work.dc.html" style="color:#cbf24c">Our Work</a><span aria-hidden="true">/</span><span aria-current="page">Case {{ cs.num }}</span></nav>
+    <p data-hero-in="" style="margin:0;font-size:13px;display:flex;gap:10px;flex-wrap:wrap"><span>{{ cs.sector }} · {{ cs.location }}</span><span style="background:#cbf24c;color:#1B3738;border-radius:99px;padding:2px 10px;font-size:11px">Sample case study</span></p>
+    <h1 id="cs-h" style="margin:0;font-weight:400;font-size:clamp(36px,6vw,72px);line-height:1.02;letter-spacing:-.02em;max-width:820px"><span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-word="" style="display:inline-block">{{ cs.title }}</span></span></h1>
+  </div>
+</section>
+
+<section aria-label="Key figures" style="background:#EFEFEF">
+  <div style="max-width:1100px;margin:-72px auto 0;position:relative;padding:0 clamp(20px,4vw,24px)">
+    <dl data-reveal="" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="background:{{ s.bg }};color:{{ s.fg }};border-radius:18px;padding:24px;display:flex;flex-direction:column-reverse;gap:8px;min-height:140px;justify-content:flex-end">
+          <dt style="font-size:13px;opacity:.85">{{ s.l }}</dt><dd style="margin:0;font-size:clamp(30px,3.4vw,42px);line-height:1;color:{{ s.accent }}">{{ s.v }}</dd>
+        </div>
+      </sc-for>
+    </dl>
+  </div>
+</section>
+
+<section aria-labelledby="sum-h" style="background:#EFEFEF">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,24px);display:grid;grid-template-columns:{{ mainCols }};gap:40px;align-items:start">
+    <aside data-reveal="" aria-label="Project details" style="background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;position:{{ asidePos }};top:100px">
+      <dl style="margin:0;display:grid;gap:14px">
+        <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid #e2e5df"><dt style="font-size:13px;color:#5b6b6b">Sector</dt><dd style="margin:0;font-size:14px;text-align:right">{{ cs.sector }}</dd></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid #e2e5df"><dt style="font-size:13px;color:#5b6b6b">Location</dt><dd style="margin:0;font-size:14px;text-align:right">{{ cs.location }}</dd></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid #e2e5df"><dt style="font-size:13px;color:#5b6b6b">Completed</dt><dd style="margin:0;font-size:14px;text-align:right">{{ cs.completed }}</dd></div>
+        <div style="display:flex;justify-content:space-between;gap:12px"><dt style="font-size:13px;color:#5b6b6b">Duration</dt><dd style="margin:0;font-size:14px;text-align:right">{{ cs.duration }}</dd></div>
+      </dl>
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;color:#5b6b6b">Installed</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ cs.systems }}" as="y" hint-placeholder-count="3"><span style="font-size:12px;padding:6px 12px;border-radius:99px;background:#1B3738;color:#cbf24c">{{ y }}</span></sc-for></div>
+      </div>
+      <a href="Contact.dc.html" style="margin-top:6px;display:flex;justify-content:space-between;align-items:center;background:#cbf24c;color:#1B3738;font-size:14px;font-weight:500;padding:4px 4px 4px 18px;border-radius:99px" style-hover="color:#1B3738">Similar project? <span aria-hidden="true" style="width:38px;height:38px;border-radius:50%;background:#1B3738;color:#cbf24c;display:grid;place-items:center">↗</span></a>
+    </aside>
+    <div style="display:flex;flex-direction:column;gap:48px">
+      <h2 id="sum-h" style="margin:0;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.3;text-wrap:pretty">{{ cs.summary }}</h2>
+      <sc-for list="{{ sections }}" as="x" hint-placeholder-count="3">
+        <div data-reveal="" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding-top:24px;border-top:1px solid #cfd3cf">
+          <span style="font-size:13px;color:#5b6b6b;padding-top:6px">{{ x.n }}</span>
+          <div style="display:flex;flex-direction:column;gap:12px"><h3 style="margin:0;font-weight:400;font-size:clamp(20px,2.4vw,24px)">{{ x.t }}</h3><p style="margin:0;font-size:15px;line-height:1.75;color:#33484a">{{ x.x }}</p></div>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
+        <sc-for list="{{ cs.gallery }}" as="g" hint-placeholder-count="2">
+          <figure data-reveal="" style="margin:0;position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3"><img data-parallax="" src="{{ g.src }}" alt="{{ g.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><figcaption style="position:absolute;left:0;bottom:0;background:#EFEFEF;font-size:12px;padding:8px 12px 6px 10px;border-top-right-radius:12px">{{ g.alt }}</figcaption></figure>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Customer quote" style="background:#1B3738;color:#fff">
+  <figure style="max-width:880px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(20px,4vw,24px);display:flex;flex-direction:column;gap:28px;align-items:flex-start">
+    <span aria-hidden="true" style="width:56px;height:56px;border-radius:50%;background:#cbf24c;color:#1B3738;display:grid;place-items:center;font-size:clamp(28px,3.6vw,36px);line-height:1;padding-top:14px">”</span>
+    <blockquote data-reveal="" style="margin:0;font-size:clamp(26px,3vw,38px);line-height:1.25;letter-spacing:-.01em">{{ cs.quote.q }}</blockquote>
+    <figcaption data-reveal="" style="display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;color:#cbf24c">{{ cs.quote.name }}</span><span style="font-size:13px;color:rgba(255,255,255,.75)">{{ cs.quote.role }} · sample quote</span></figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="more-h" style="background:#EFEFEF">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,88px) clamp(20px,4vw,24px);display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
+      <h2 id="more-h" style="margin:0;font-weight:400;font-size:clamp(32px,3.6vw,40px);line-height:1.08">More of our work</h2>
+      <a href="Work.dc.html" style="font-size:14px;border-bottom:1px solid #1B3738;padding-bottom:2px" style-hover="color:#25494A">All case studies →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px">
+      <sc-for list="{{ others }}" as="o" hint-placeholder-count="2">
+        <a data-reveal="" data-tilt="" href="{{ o.href }}" style="position:relative;display:block;height:clamp(240px,34vw,320px);border-radius:18px;overflow:hidden;color:#fff" style-hover="color:#fff">
+          <img src="{{ o.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,55,56,0) 35%,rgba(27,55,56,.92) 100%)"></div>
+          <span style="position:absolute;top:0;left:0;background:#EFEFEF;color:#1B3738;font-size:12px;padding:6px 12px 8px 8px;border-bottom-right-radius:12px">Case {{ o.num }} — {{ o.sector }}</span>
+          <span style="position:absolute;left:20px;right:20px;bottom:20px;font-size:20px">{{ o.title }} <span aria-hidden="true" style="color:#cbf24c">→</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="cta-h" style="background:#cbf24c;color:#1B3738">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,80px) clamp(20px,4vw,24px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+    <h2 id="cta-h" style="margin:0;font-weight:400;font-size:clamp(28px,3.2vw,38px);line-height:1.12;max-width:520px">Want numbers like these for your property?</h2>
+    <a data-magnetic="" href="Contact.dc.html" style="display:flex;align-items:center;gap:clamp(14px,3vw,30px);background:#1B3738;color:#fff;font-size:14px;padding:4px 4px 4px 18px;border-radius:99px" style-hover="color:#fff">Start a Project <span aria-hidden="true" style="width:40px;height:40px;border-radius:50%;background:#cbf24c;color:#1B3738;display:grid;place-items:center">↗</span></a>
+  </div>
+</section>
+</main>
+
+<dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;kinross-farmhouse&quot;,&quot;rosyth-workshop&quot;,&quot;halbeath-development&quot;],&quot;default&quot;:&quot;kinross-farmhouse&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state={sk:typeof window!=='undefined'?window.SK:null,w:typeof window!=='undefined'?window.innerWidth:1400};
+  componentDidMount(){
+    let n=0;const wait=()=>{if(window.SK&&window.SKMotion){this.setState({sk:window.SK},()=>{if(this.props.animations??true)setTimeout(()=>{this._stop=window.SKMotion.init();},60);});}else if(n++<100)this._w=setTimeout(wait,80);};wait();
+    this._r=()=>{clearTimeout(this._rt);this._rt=setTimeout(()=>{const w=window.innerWidth;if((w>=900)!==(this.state.w>=900))this.setState({w});},150);};window.addEventListener('resize',this._r);
+  }
+  componentWillUnmount(){clearTimeout(this._w);clearTimeout(this._rt);window.removeEventListener('resize',this._r);this._stop&&this._stop();}
+  renderVals(){
+    const sk=this.state.sk,desk=this.state.w>=900;const all=sk?sk.cases:[];
+    const slug=(sk&&sk.qs('slug'))||this.props.slug||'kinross-farmhouse';
+    const cs=all.find(c=>c.slug===slug)||all[0]||{quote:{},stats:[],systems:[],gallery:[]};
+    if(cs.title&&typeof document!=='undefined')document.title=cs.title+' | SK Energy';
+    const pal=[{bg:'#1B3738',fg:'#fff',accent:'#cbf24c'},{bg:'#cbf24c',fg:'#1B3738',accent:'#1B3738'},{bg:'#fff',fg:'#1B3738',accent:'#1B3738'}];
+    return {cs,mainCols:desk?'300px minmax(0,1fr)':'minmax(0,1fr)',asidePos:desk?'sticky':'static',
+      stats:cs.stats.map((s,i)=>({...s,...pal[i%3]})),
+      sections:[{n:'01',t:'The challenge',x:cs.challenge},{n:'02',t:'Our solution',x:cs.solution},{n:'03',t:'The result',x:cs.results}],
+      others:all.filter(c=>c.slug!==cs.slug)};
+  }
+}
+</script>
+</body>
+</html>
